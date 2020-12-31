@@ -29,16 +29,18 @@ def message_time(message, say):
 def scheduled_message():
     # Unix Epoch time
     client = WebClient(token=os.environ.get("SLACK_BOT_TOKEN"))
-    try:
-        time_to_post = 1609290542
-        channel_id = os.environ.get("CHANNEL_ID")
-        client.chat_scheduleMessage(
-            channel=channel_id,
-            post_at=time_to_post,
-            text="Hello this is a scheduled message"
-        )
-    except SlackApiError:
-        print("Some error occured")
+    list_of_time_to_post = [1609360668, 1609360678]
+    for time in list_of_time_to_post:
+        try:
+            time_to_post = time
+            channel_id = os.environ.get("CHANNEL_ID")
+            client.chat_scheduleMessage(
+                channel=channel_id,
+                post_at=time_to_post,
+                text="Hello this is a scheduled message"
+            )
+        except SlackApiError:
+            print("Some error occured")
 
 # Start your app
 if __name__ == "__main__":
