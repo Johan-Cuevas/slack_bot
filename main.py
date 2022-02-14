@@ -20,7 +20,7 @@ def message_hello(message, say):
     # say() sends a message to the channel where the event was triggered
     say(f"Hey there <@{message['user']}>!")
 
-@app.message("Tell me the tiem")
+@app.message("Tell me the time")
 def message_time(message, say):
     say(f"The date is f{datetime.date.today()} ")
 
